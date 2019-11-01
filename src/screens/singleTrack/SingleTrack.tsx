@@ -2,17 +2,11 @@ import React, { Component } from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { style } from './SingleTrack.style';
 
-// @inject('userStore')
-//Name, image, artists, Album, duration. 
-
-
 class SingleTrack extends Component<any> {
-
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text style={style.heading}> Songs </Text>
-
         <TouchableOpacity
           style={{ margin: 10 }}
           onPress={() => null}>

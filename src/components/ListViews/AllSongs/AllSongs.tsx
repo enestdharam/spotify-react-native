@@ -11,20 +11,16 @@ type Props = {
     onClick?: () => any;
 }
 export const AllSongs: React.SFC<Props> = ({ imageUrl, name, artistName, popularity, onClick }) => {
-
     return (
         <TouchableOpacity
             style={{ margin: 10 }}
             onPress={() => onClick()}>
-
             <Image
                 style={style.imageSize}
-                source={{ uri: imageUrl }}
-            />
+                source={{ uri: imageUrl }} />
             <Text style={style.title}>{name}</Text>
             <Text style={style.title}>{artistName}</Text>
             <Text style={style.title}>{popularity}</Text>
-
         </TouchableOpacity>
     );
 };

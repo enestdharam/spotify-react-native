@@ -1,2 +1,2 @@
 export { Recommended } from './ListViews/Recommended/RecommendedView';
-export {AllSongs} from './ListViews/AllSongs/AllSongs';
+export { AllSongs } from './ListViews/AllSongs/AllSongs';

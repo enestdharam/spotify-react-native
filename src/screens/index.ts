@@ -1,3 +1,3 @@
-export { default as Home } from './home/Home';
-export {default as Tracks} from './allTracks/AllTracks';
-export {default as SingleTrack} from './singleTrack/SingleTrack';
+export { default as Home } from './Home/Home';
+export { default as Tracks } from './AllTracks/AllTracks';
+export { default as SingleTrack } from './SingleTrack/SingleTrack';

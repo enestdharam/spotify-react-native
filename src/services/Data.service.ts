@@ -8,6 +8,7 @@ export const dataService = {
 async function getPlayLists() {
   try {
     const response = await new Http({}).get(url.getPlayLists);
+    debugger;
     return response.data;
   } catch (error) {
     console.log('error', error);

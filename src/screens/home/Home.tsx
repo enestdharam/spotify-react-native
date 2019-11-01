@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { View, Text, FlatList } from 'react-native';
-import { computed } from 'mobx';
+import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { computed, observable } from 'mobx';
 import { UserStore } from '../../store/User.store';
 import { dataService } from '../../services/Data.service';
 import { style } from './Home.style';
-import { Recommended } from '../../components/index'
+import { Recommended } from 'components';
 
 type Props = {
   userStore: UserStore;
@@ -15,16 +15,18 @@ type Props = {
 @inject('userStore')
 @observer
 class Home extends Component<Props> {
+  @observable isLoading: boolean = false;
 
   componentDidMount() {
-    
+    this.isLoading = true;
     dataService
       .getPlayLists()
       .then(response => {
+        this.isLoading = false;
         this.props.userStore.setPlayList(response);
       })
       .catch(error => {
-        console.log("Error "+JSON.stringify(error))
+        this.isLoading = false;
       });
   }
 
@@ -33,25 +35,25 @@ class Home extends Component<Props> {
     return this.props.userStore.playlists;
   }
 
-
   render() {
-
-    return (<View>
-      <Text style={style.heading}> Recommended Songs </Text>
-      <Text>Number of Songs</Text>
-
-      {/* <FlatList
-        data={this.props.userStore.playlists}
-        renderItem={({item}) => (
-          <Recommended
-            title={item.name}
-            imageUrl="fsdfsd"
-            onClick={() => this.props.navigation.native('Tracks')} />)}
-        keyExtractor={item => item.id}
-      /> */}
-
-
-    </View>);
+    return (
+      <View>
+        <Text style={style.heading}>Recommended Songs</Text>
+        {
+          this.isLoading ? <ActivityIndicator /> :
+            <FlatList
+              keyExtractor={item => item.id}
+              data={this.playlists}
+              renderItem={({ item }) => (
+                <Recommended
+                  title={item.name}
+                  imageUrl="fsdfsd"
+                  onPress={() => this.props.navigation.native('Tracks')} />
+              )}
+            />
+        }
+      </View>
+    );
   }
 }
 export default Home;

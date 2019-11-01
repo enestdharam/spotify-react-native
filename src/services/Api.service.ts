@@ -45,7 +45,6 @@ export class Http {
   }
 
   private errorHandler(error) {
-    debugger;
     throw error;
   }
 }
