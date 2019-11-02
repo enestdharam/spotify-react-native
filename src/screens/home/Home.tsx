@@ -5,11 +5,12 @@ import { computed, observable } from 'mobx';
 import { UserStore } from '../../store/User.store';
 import { dataService } from '../../services/Data.service';
 import { style } from './Home.style';
-import { Recommended } from 'components';
+import { PlayListView } from '../../components/index';
+import { PlayListModel } from '../../models/index';
 
 type Props = {
   userStore: UserStore;
-  navigation: any
+  navigation: any;
 };
 
 @inject('userStore')
@@ -21,7 +22,7 @@ class Home extends Component<Props> {
     this.isLoading = true;
     dataService
       .getPlayLists()
-      .then(response => {
+      .then((response: PlayListModel[]) => {
         this.isLoading = false;
         this.props.userStore.setPlayList(response);
       })
@@ -31,24 +32,24 @@ class Home extends Component<Props> {
   }
 
   @computed
-  get playlists(): any[] {
+  get playlists(): PlayListModel[] {
     return this.props.userStore.playlists;
   }
+
 
   render() {
     return (
       <View>
-        <Text style={style.heading}>Recommended Songs</Text>
+        <Text style={style.heading}>Recommended Playlists</Text>
         {
           this.isLoading ? <ActivityIndicator /> :
-            <FlatList
-              keyExtractor={item => item.id}
+            <FlatList<PlayListModel>
+              keyExtractor={(item, i) => item.id.toString()}
               data={this.playlists}
               renderItem={({ item }) => (
-                <Recommended
-                  title={item.name}
-                  imageUrl="fsdfsd"
-                  onPress={() => this.props.navigation.native('Tracks')} />
+                <PlayListView
+                  data={item}
+                  onPress={() => this.props.navigation.navigate('Tracks', { playList: item })} />
               )}
             />
         }

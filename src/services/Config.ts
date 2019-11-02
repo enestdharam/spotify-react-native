@@ -1,4 +1,4 @@
 export const apiConfig = {
-    authToken: 'BQAMxu4iBhHBGE0HDPeTit_B1gkLmuRAGcx7wr-WoFR8K7U3KXYAyG9tpppYTB_j-3Q5-7P0byn1kA_qtv8',
+    authToken: 'BQDpHfkCLD_eDMTnfojsbuXWUOm8uHY3lVIZ7GnZCNspXxF8MtcM81oJBXohfCHgKmAhhs5qddMYrx1p95U',
     appToken: 'N2U5NTE1N2UyYTJkNGM1MjhiNjY1MDRkYjIwYzU0ODA6OGZkYmZlOTg2ZGNiNDhiOWJjYTI1ODg0MGE4NGU1ZTM=',
 }
