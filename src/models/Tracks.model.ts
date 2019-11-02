@@ -16,8 +16,8 @@ export class TracksModel {
         this.popularity = data.popularity || 0;
         this.durationInMs = data.durationInMs || 0;
         this.total = data.total || 0;
-        this.albumName=data.albumName;
-        this.artistName=data.artistName;
+        this.albumName = data.albumName;
+        this.artistName = data.artistName;
         this.imageUrl = data.imageUrl || '';
     }
 
@@ -31,7 +31,6 @@ export class TracksModel {
             artistName: apiData.artists.length ? apiData.artists[0].name : '',
             albumName: apiData.album.name || 'No name '
         }
-        debugger;
         return new TracksModel(data);
     }
 

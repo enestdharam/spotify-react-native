@@ -33,7 +33,6 @@ class AllTracks extends Component<Props> {
       .then((response: TracksModel[]) => {
         this.isLoading = false;
         this.props.userStore.setTrackslists(response);
-        debugger;
       })
       .catch(error => {
         this.isLoading = false;
