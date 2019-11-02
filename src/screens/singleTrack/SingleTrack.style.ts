@@ -7,11 +7,9 @@ export const style = StyleSheet.create({
         fontWeight: '700',
         margin: 15
     },
-    songImage: {
-        width: 200,
-        height: 300
-    },
-    text: {
-        marginTop: 10
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })

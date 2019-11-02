@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 export const style = StyleSheet.create({
-    imageSize: {
-        width: '100%',
+    songImage: {
+        width: 200,
         height: 200
     },
-    title: {
+    text: {
+        marginLeft: 10,
         marginTop: 10,
-        fontSize:16,
-        fontWeight:'bold'
+        fontSize: 14,
+        fontWeight: 'bold'
     }
 });

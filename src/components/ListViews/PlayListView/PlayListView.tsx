@@ -11,14 +11,13 @@ type Props = {
 }
 
 export const PlayListView: React.SFC<Props> = ({ data, onPress }) => {
-    const imageUrl = data.images.length ? data.images.length[0] : '';
     return (
         <TouchableOpacity
             style={{ margin: 10 }}
             onPress={() => onPress()}>
             <Image
                 style={style.imageSize}
-                source={{ uri: imageUrl }} />
+                source={{ uri: data.images[0].url }} />
             <Text style={style.title}>
                 {data.name}
             </Text>
