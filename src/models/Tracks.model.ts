@@ -7,25 +7,28 @@ export class TracksModel {
     popularity: number;
     total?: number;
     imageUrl: string;
+    durationInMs: number;
+    albumName: string;
 
     constructor(data?: TracksModel) {
         this.id = data.id || '';
         this.name = data.name || '';
         this.popularity = data.popularity || 0;
+        this.durationInMs = data.durationInMs || 0;
         this.total = data.total || 0;
         this.imageUrl = data.imageUrl || '';
     }
 
     public static deserialize(apiData: any): TracksModel {
-        debugger;
         const data = {
             id: apiData.id,
             name: apiData.name,
             popularity: apiData.popularity,
+            durationInMs: apiData.duration_ms,
             imageUrl: apiData.preview_url || Constraints.imagePlaceHoder,
-            artistName: apiData.artists.length ? apiData.artists[0].name : ''
+            artistName: apiData.artists.length ? apiData.artists[0].name : '',
+            albumName: apiData.album.name || 'No name '
         }
-
         return new TracksModel(data);
     }
 
